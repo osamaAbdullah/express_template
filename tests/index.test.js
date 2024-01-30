@@ -1,6 +1,6 @@
 import request from 'supertest'
 import app from '#root/app'
-import {sequelize} from "#db/index";
+import { sequelize } from "#db/index";
 
 const user = {
     id: 1,

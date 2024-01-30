@@ -1,63 +1,63 @@
-
 <!doctype html>
 <html lang="en">
 
 <head>
     <title>Code coverage report for src/controllers/user.controller.js</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <link href="../../prettify.css" rel="stylesheet"/>
+    <link href="../../base.css" rel="stylesheet"/>
+    <link href="../../favicon.png" rel="shortcut icon" type="image/x-icon"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <style type='text/css'>
         .coverage-summary .sorter {
             background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
-    
+
 <body>
 <div class='wrapper'>
     <div class='pad1'>
         <h1><a href="../../index.html">All files</a> / <a href="index.html">src/controllers</a> user.controller.js</h1>
         <div class='clearfix'>
-            
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">37.14% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>13/35</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>0/0</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>0/6</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">37.14% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>13/35</span>
             </div>
-        
-            
+
+
         </div>
         <p class="quiet">
-            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for
+            the previous block.
         </p>
         <template id="filterTemplate">
             <div class="quiet">
                 Filter:
-                <input oninput="onInput()" type="search" id="fileSearch">
+                <input id="fileSearch" oninput="onInput()" type="search">
             </div>
         </template>
     </div>
@@ -135,56 +135,57 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { User } from "#models/user.model";
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function getAll(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >    const users = await User.findAll({include: 'posts'})</span>
-<span class="cstat-no" title="statement not covered" >    res.json(users)</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export <span class="fstat-no" title="function not covered">async function getAll(req, res) {</span>
+<span class="cstat-no" title="statement not covered">    const users = await User.findAll({include: 'posts'})</span>
+<span class="cstat-no" title="statement not covered">    res.json(users)</span>
+<span class="cstat-no" title="statement not covered">}</span>
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function get(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >    const user = await User.findByPk(req.params.id)</span>
-<span class="cstat-no" title="statement not covered" >    res.json(user)</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export <span class="fstat-no" title="function not covered">async function get(req, res) {</span>
+<span class="cstat-no" title="statement not covered">    const user = await User.findByPk(req.params.id)</span>
+<span class="cstat-no" title="statement not covered">    res.json(user)</span>
+<span class="cstat-no" title="statement not covered">}</span>
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function store(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >    const { name, email, role } = req.body;</span>
-<span class="cstat-no" title="statement not covered" >    const user = await User.create({ name, email, role });</span>
-<span class="cstat-no" title="statement not covered" >    return res.json(user)</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export <span class="fstat-no" title="function not covered">async function store(req, res) {</span>
+<span class="cstat-no" title="statement not covered">    const { name, email, role } = req.body;</span>
+<span class="cstat-no" title="statement not covered">    const user = await User.create({ name, email, role });</span>
+<span class="cstat-no" title="statement not covered">    return res.json(user)</span>
+<span class="cstat-no" title="statement not covered">}</span>
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function update(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >    const { name, email, role } = req.body;</span>
-<span class="cstat-no" title="statement not covered" >    const user = await User.findByPk(req.params.id);</span>
-<span class="cstat-no" title="statement not covered" >    await user.update({name, email, role})</span>
-<span class="cstat-no" title="statement not covered" >    return res.json(user)</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export <span class="fstat-no" title="function not covered">async function update(req, res) {</span>
+<span class="cstat-no" title="statement not covered">    const { name, email, role } = req.body;</span>
+<span class="cstat-no" title="statement not covered">    const user = await User.findByPk(req.params.id);</span>
+<span class="cstat-no" title="statement not covered">    await user.update({name, email, role})</span>
+<span class="cstat-no" title="statement not covered">    return res.json(user)</span>
+<span class="cstat-no" title="statement not covered">}</span>
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function destroy(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >    res.json({</span>
-<span class="cstat-no" title="statement not covered" >        success:  await User.destroy({where: {id: req.params.id}})</span>
-<span class="cstat-no" title="statement not covered" >    })</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export <span class="fstat-no" title="function not covered">async function destroy(req, res) {</span>
+<span class="cstat-no" title="statement not covered">    res.json({</span>
+<span class="cstat-no"
+      title="statement not covered">        success:  await User.destroy({where: {id: req.params.id}})</span>
+<span class="cstat-no" title="statement not covered">    })</span>
+<span class="cstat-no" title="statement not covered">}</span>
 &nbsp;
-export <span class="fstat-no" title="function not covered" >async function getPosts(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >    const user = await User.findByPk(req.params.id)</span>
-<span class="cstat-no" title="statement not covered" >    res.json(await user.getPosts())</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export <span class="fstat-no" title="function not covered">async function getPosts(req, res) {</span>
+<span class="cstat-no" title="statement not covered">    const user = await User.findByPk(req.params.id)</span>
+<span class="cstat-no" title="statement not covered">    res.json(await user.getPosts())</span>
+<span class="cstat-no" title="statement not covered">}</span>
 &nbsp;</pre></td></tr></table></pre>
 
-                <div class='push'></div><!-- for sticky footer -->
-            </div><!-- /wrapper -->
-            <div class='footer quiet pad2 space-top1 center small'>
-                Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-30T12:21:11.958Z
-            </div>
-        <script src="../../prettify.js"></script>
-        <script>
-            window.onload = function () {
-                prettyPrint();
-            };
-        </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
-    </body>
+    <div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+    Code coverage generated by
+    <a href="https://istanbul.js.org/" rel="noopener noreferrer" target="_blank">istanbul</a>
+    at 2024-01-30T12:21:11.958Z
+</div>
+<script src="../../prettify.js"></script>
+<script>
+    window.onload = function () {
+        prettyPrint();
+    };
+</script>
+<script src="../../sorter.js"></script>
+<script src="../../block-navigation.js"></script>
+</body>
 </html>
     

@@ -1,4 +1,3 @@
-
 export default {
     local: {
         username: process.env.DB_USERNAME,

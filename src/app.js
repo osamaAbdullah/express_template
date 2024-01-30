@@ -2,7 +2,7 @@ import path from 'path';
 import express from 'express';
 import 'dotenv/config';
 import { URL } from "url";
-import {globalErrorHandlers, norFoundErrorHandler} from "#root/exceptions/errorHandlers";
+import { globalErrorHandlers, norFoundErrorHandler } from "#root/exceptions/errorHandlers";
 import '#root/exceptions/asyncErrorHandling';
 
 import APIRoutes from '#routes/api'

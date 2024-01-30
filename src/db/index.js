@@ -1,4 +1,4 @@
-import {Sequelize} from 'sequelize';
+import { Sequelize } from 'sequelize';
 import config from '#config/database'
 
 const env = config[process.env.NODE_ENV];

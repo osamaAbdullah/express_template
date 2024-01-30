@@ -1,5 +1,6 @@
-import { Model, DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import { sequelize } from "#db/index";
+
 class Post extends Model {
 
     static associate({ User }) {

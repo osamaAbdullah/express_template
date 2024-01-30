@@ -1,9 +1,8 @@
-import { Model, DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import { sequelize } from "#db/index";
-import {Post} from "#models/post.model";
+import { Post } from "#models/post.model";
 
 class User extends Model {
-
 
 
     toJSON() {
@@ -47,7 +46,7 @@ User.init(
     }
 )
 
-User.hasMany(Post, {foreignKey: 'userId', as: 'posts'})
-Post.belongsTo(User, {foreignKey: 'userId', as: 'author'})
+User.hasMany(Post, { foreignKey: 'userId', as: 'posts' })
+Post.belongsTo(User, { foreignKey: 'userId', as: 'author' })
 
 export { User };

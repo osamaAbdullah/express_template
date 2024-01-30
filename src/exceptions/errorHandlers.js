@@ -13,7 +13,7 @@ export const globalErrorHandlers = (err, req, res, next) => {
 
     if (err.name.startsWith('Sequelize')) {
 
-        const errors  = {}
+        const errors = {}
         err.errors.forEach(error => {
             errors[error.path] = error.message
         })
@@ -33,7 +33,7 @@ export const globalErrorHandlers = (err, req, res, next) => {
 };
 
 export const norFoundErrorHandler = (req, res) => {
-    res.status(404).send({message: 'Route not found!'});
+    res.status(404).send({ message: 'Route not found!' });
 };
 
 export const asyncErrorHandler = (callback) => {
