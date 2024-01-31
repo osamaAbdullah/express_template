@@ -27,7 +27,7 @@
   "imports": {
     "#root/*": "./src/*.js",
     "#controllers/*": "./src/controllers/*.js",
-    "#models/*": "./src/models/*.js",
+    "#models/*": "./src/db/models/*.js",
     "#routes/*": "./src/routes/*.js",
     "#middlewares/*": "./src/middlewares/*.js",
     "#db/*": "./src/db/*.js",
