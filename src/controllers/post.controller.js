@@ -1,7 +1,8 @@
-import { Post } from "#models/post.model";
+import { Post } from "#db/models/post.model";
 
 export async function getAll(req, res) {
-    res.json(await Post.findAll())
+    const posts = await Post.findAll();
+    res.json({ posts })
 }
 
 export async function get(req, res) {

@@ -15,7 +15,7 @@ const user2 = {
     role: 'admin',
 }
 
-describe("GET /api/v1/users", () => {
+describe('test user model', () => {
 
     beforeAll(async () => {
         await sequelize.sync({ force: true })
@@ -28,7 +28,7 @@ describe("GET /api/v1/users", () => {
     });
 
     it("get a specific user in db", async () => {
-        const res = await request(app).get("/api/v1/users/" + user.id).send();
+        const res = await request(app).get("/api/v1/users/" + user.id);
         expect(res.statusCode).toBe(200)
         expect(res.body.name).toMatch(user.name)
     });
@@ -41,23 +41,23 @@ describe("GET /api/v1/users", () => {
 
     it("get all users in db", async () => {
         await request(app).post("/api/v1/users").send(user2)
-        const res = await request(app).get("/api/v1/users").send();
+        const res = await request(app).get("/api/v1/users");
         expect(res.statusCode).toBe(200)
         expect(res.body.users.length).toEqual(2)
     });
 
     it("deletes a specific user in db", async () => {
-        const res = await request(app).delete("/api/v1/users/" + user.id).send()
+        const res = await request(app).delete("/api/v1/users/" + user.id)
         expect(res.statusCode).toBe(200)
 
-        const res2 = await request(app).get("/api/v1/users").send();
+        const res2 = await request(app).get("/api/v1/users");
         expect(res2.statusCode).toBe(200)
         expect(res2.body.users.length).toEqual(1)
 
-        const res3 = await request(app).delete("/api/v1/users/" + user2.id).send()
+        const res3 = await request(app).delete("/api/v1/users/" + user2.id)
         expect(res3.statusCode).toBe(200)
 
-        const res4 = await request(app).get("/api/v1/users").send();
+        const res4 = await request(app).get("/api/v1/users");
         expect(res4.statusCode).toBe(200)
         expect(res4.body.users.length).toEqual(0)
     });

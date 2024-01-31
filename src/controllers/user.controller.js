@@ -1,4 +1,4 @@
-import { User } from "#models/user.model";
+import { User } from "#db/models/user.model";
 
 export async function getAll(req, res) {
     const users = await User.findAll({ include: "posts" });
