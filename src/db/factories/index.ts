@@ -1,10 +1,8 @@
-export const createModel = async (model, modelFactory, attributes = {}, count = 1) => {
+export const createModel = async (model, modelFactory, attributes: object = {}, count: number = 1) => {
 
     if (count === 1) {
         return (await model.create(await modelFactory(attributes))).dataValues;
-    }
-
-    else if (count > 1) {
+    } else if (count > 1) {
 
         const ids = [];
 
@@ -15,8 +13,7 @@ export const createModel = async (model, modelFactory, attributes = {}, count = 
 
         return ids;
 
-    }
-    else {
+    } else {
 
         throw new Error('Invalid count');
 

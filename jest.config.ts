@@ -1,10 +1,6 @@
-/**
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
+import type {Config} from '@jest/types';
 
-/** @type {import('jest').Config} */
-const config = {
+const config: Config.InitialOptions = {
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 
@@ -89,7 +85,17 @@ const config = {
     // ],
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-    // moduleNameMapper: {},
+    "moduleNameMapper": {
+        "~/(.*)": "<rootDir>/src/$1",
+        "@/(.*)": "<rootDir>/src/$1",
+        "@controllers/(.*)": "<rootDir>/src/controllers/$1",
+        "@db/(.*)": "<rootDir>/src/db/$1",
+        "@exceptions/(.*)": "<rootDir>/src/exceptions/$1",
+        "@routes/(.*)": "<rootDir>/src/routes/$1",
+        "@models/(.*)": "<rootDir>/src/models/$1",
+        "@config/(.*)": "<rootDir>/src/config/$1",
+        "@interfaces/(.*)": "<rootDir>/src/interfaces/$1",
+    },
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
     // modulePathIgnorePatterns: [],
@@ -174,13 +180,12 @@ const config = {
     // testRunner: "jest-circus/runner",
 
     // A map from regular expressions to paths to transformers
-    // transform: undefined,
+    transform: {
+        '^.+\\.ts?$': 'ts-jest',
+    },
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-    // transformIgnorePatterns: [
-    //   "/node_modules/",
-    //   "\\.pnp\\.[^\\/]+$"
-    // ],
+    transformIgnorePatterns: ['<rootDir>/node_modules/'],
 
     // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
     // unmockedModulePathPatterns: undefined,
