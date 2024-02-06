@@ -30,6 +30,6 @@ export async function destroy(req, res) {
 }
 
 export async function getPosts(req, res) {
-    const user = await User.findByPk(req.params.id);
-    res.json(await user);
+    const user = await User.findByPk(req.params.id, {include: 'posts'});
+    res.json(user);
 }
