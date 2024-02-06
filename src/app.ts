@@ -12,7 +12,8 @@ const app: Express = express();
 
 app.use(session({
     secret: 'ajnsdfkjnaskjfnjk8978998*&(*^(*($E*(',
-    resave: false
+    resave: false,
+    saveUninitialized: true
 }));
 
 app.use(express.json());
