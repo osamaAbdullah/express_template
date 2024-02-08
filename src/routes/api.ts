@@ -1,8 +1,11 @@
 import express from 'express';
 import * as User from "@controllers/user.controller";
 import * as Post from "@controllers/post.controller";
+import authRoutes from "@routes/auth.routes";
 
 const router = express.Router();
+
+authRoutes(router);
 
 router.get('/users', User.getAll);
 router.get('/users/:id', User.get);
@@ -11,7 +14,6 @@ router.put('/users/:id', User.update);
 router.delete('/users/:id', User.destroy);
 
 router.get('/users/:id/posts', User.getPosts);
-
 
 router.get('/posts', Post.getAll);
 router.get('/posts/:id', Post.get);

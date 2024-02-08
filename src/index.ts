@@ -14,7 +14,7 @@ app.listen(
 );
 
 process.on('unhandledRejection', (error, promise) => {
-    console.log('\x1b[1m', `Error: ${error.message}`);
+    console.log('\x1b[1m', `Error: ${error}`, error);
     // Close server & exit process
     // app.close(() => process.exit(1));
 });

@@ -1,7 +1,9 @@
 export const globalErrorHandlers = (err, req, res, next) => {
     try {
+
         const sequelizeValidationErrors: string[] = [
-            'SequelizeUniqueConstraintError'
+            'SequelizeUniqueConstraintError',
+            'SequelizeValidationError'
         ];
 
         if (sequelizeValidationErrors.includes(err.name)) {

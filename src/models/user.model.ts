@@ -34,6 +34,18 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
 
     @Attribute({
         type: DataTypes.STRING,
+        allowNull: false,
+    })
+    declare password: string;
+
+    @Attribute({
+        type: DataTypes.STRING,
+        allowNull: false,
+    })
+    declare salt: string;
+
+    @Attribute({
+        type: DataTypes.STRING,
         allowNull: false
     })
     declare role: string;
@@ -41,8 +53,8 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
     @HasMany(() => Post, 'userId')
     declare posts?: NonAttribute<Post[]>;
 
-    toJSON() {
-        return {...this.get()}
+    toJSON() : InferAttributes<User> {
+        return {...this.get(), password: undefined, salt: undefined}
     }
 
 }

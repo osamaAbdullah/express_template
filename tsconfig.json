@@ -50,6 +50,9 @@
       ],
       "@interfaces/*": [
         "interfaces/*"
+      ],
+      "@utils/*": [
+        "lib/utils/*"
       ]
     }
   },

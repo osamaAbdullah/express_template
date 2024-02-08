@@ -39,7 +39,7 @@ export class Post extends Model<InferAttributes<Post>, InferCreationAttributes<P
     })
     declare userId: number;
 
-    toJSON() {
+    toJSON() : InferAttributes<Post> {
         return {...this.get()}
     }
 

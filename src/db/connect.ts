@@ -2,6 +2,7 @@ import {Sequelize} from '@sequelize/core';
 import config from '@config/database'
 import {User} from "@models/user.model";
 import {Post} from "@models/post.model";
+import {tr} from "@faker-js/faker";
 
 const env = config[process.env.NODE_ENV];
 
@@ -24,6 +25,7 @@ export const sequelize = new Sequelize(env.database, env.username, env.password,
 export async function connect() {
     try {
         await sequelize.authenticate();
+        await sequelize.sync({force: false});
         console.log('connected to DB')
     } catch (error) {
         console.log('DB connection failed', error)
