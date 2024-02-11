@@ -1,3 +1,4 @@
+import { User } from "@models/user.model";
 import {
     CreationOptional,
     DataTypes,
@@ -6,8 +7,7 @@ import {
     Model,
     NonAttribute
 } from '@sequelize/core';
-import {User} from "@models/user.model";
-import {Attribute, BelongsTo} from "@sequelize/core/decorators-legacy";
+import { Attribute, BelongsTo } from "@sequelize/core/decorators-legacy";
 
 export class Post extends Model<InferAttributes<Post>, InferCreationAttributes<Post>> {
     @Attribute({
@@ -16,31 +16,31 @@ export class Post extends Model<InferAttributes<Post>, InferCreationAttributes<P
         type: DataTypes.INTEGER.UNSIGNED,
     })
     declare id: CreationOptional<number>;
-
+    
     @Attribute({
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
     })
     declare title: string;
-
+    
     @Attribute({
         type: DataTypes.STRING,
         allowNull: false,
     })
     declare body: string;
-
+    
     @BelongsTo(() => User, 'userId')
     declare user: NonAttribute<User>;
-
+    
     @Attribute({
         type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false
     })
     declare userId: number;
-
-    toJSON() : InferAttributes<Post> {
-        return {...this.get()}
+    
+    toJSON(): InferAttributes<Post> {
+        return { ...this.get() }
     }
-
+    
 }

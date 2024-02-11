@@ -1,8 +1,8 @@
-import {NextFunction, Request, Response} from "express";
+import { NextFunction, Request, Response } from "express";
 
-export function logger(req : Request, res : Response, next : NextFunction) {
-
-    console.log(req.session)
-
+export function logger(req: Request, res: Response, next: NextFunction) {
+    
+    // console.log(req.session)
+    
     next();
 }

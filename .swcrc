@@ -1,0 +1,58 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+      "dynamicImport": true,
+      "decorators": true
+    },
+    "transform": {
+      "legacyDecorator": true,
+      "decoratorMetadata": true
+    },
+    "target": "es2017",
+    "externalHelpers": false,
+    "keepClassNames": true,
+    "loose": false,
+    "minify": {
+      "compress": false,
+      "mangle": false
+    },
+    "baseUrl": "src",
+    "paths": {
+       "@/*": [
+         "*"
+       ],
+       "@controllers/*": [
+         "controllers/*"
+       ],
+       "@db/*": [
+         "db/*"
+       ],
+       "@exceptions/*": [
+         "exceptions/*"
+       ],
+       "@routes/*": [
+         "routes/*"
+       ],
+       "@models/*": [
+         "models/*"
+       ],
+       "@config/*": [
+         "config/*"
+       ],
+       "@interfaces/*": [
+         "interfaces/*"
+       ],
+       "@utils/*": [
+         "lib/utils/*"
+       ],
+       "@console/*": [
+         "console/*"
+       ],
+     }
+  },
+  "module": {
+    "type": "nodenext"
+  }
+}

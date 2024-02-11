@@ -1,44 +1,27 @@
+import { storagePath } from "@config/app";
+import { User } from "@models/user.model";
+import { readFile } from "fs/promises";
 import passport from "passport";
-import passportLocal from "passport-local";
-import {User} from "@models/user.model";
+import passportJWT from "passport-jwt";
 
-export default (app) => {
+export default async (app) => {
+    
     app.use(passport.initialize());
-    app.use(passport.session());
-
-    passport.use(
-        new passportLocal.Strategy({usernameField: 'email'},
-            async (username, password, callback) => {
-
-                const user = await User.findOne({where: {email: username}});
-
-                return callback(undefined, user)
-
-                // User.findOne({ email: email.toLowerCase() }, (err: NativeError, user: UserDocument) => {
-                //     if (err) { return done(err); }
-                //     if (!user) {
-                //         return done(undefined, false, { message: `Email ${email} not found.` });
-                //     }
-                //     user.comparePassword(password, (err: Error, isMatch: boolean) => {
-                //         if (err) { return done(err); }
-                //         if (isMatch) {
-                //             return done(undefined, user);
-                //         }
-                //         return done(undefined, false, { message: "Invalid email or password." });
-                //     });
-                // });
-
-            }));
-
-    passport.serializeUser( (user: User, callback) => {
-        callback(null, user.id);
-    });
-
-    passport.deserializeUser(async (id, callback) => {
-        const user = await User.findByPk(id);
-        callback(null, user)
-    });
-
+    
+    passport.use(new passportJWT.Strategy({
+        jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: await readFile(storagePath('/keys/id_rsa_pub.pem'), { encoding: "utf-8" }),
+        algorithms: [ 'RS256' ]
+    }, async function ({ sub }, done) {
+        
+        const user = await User.findByPk(sub);
+        
+        if (user) {
+            return done(null, user);
+        } else {
+            return done(null, false);
+        }
+        
+    }));
+    
 }
-
-

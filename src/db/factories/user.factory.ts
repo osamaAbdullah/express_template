@@ -1,6 +1,6 @@
-import {faker} from "@faker-js/faker";
-import {User} from "@models/user.model";
-import {createModel} from "@db/factories/index";
+import { createModel } from "@db/factories/index";
+import { faker } from "@faker-js/faker";
+import { User } from "@models/user.model";
 
 export const makeUser = async (attributes: any = {}) => {
     return {

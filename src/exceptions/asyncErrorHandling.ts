@@ -1,5 +1,5 @@
-import Layer from 'express/lib/router/layer.js';
 import Router from 'express/lib/router/index.js';
+import Layer from 'express/lib/router/layer.js';
 
 const last = (arr = []) => arr[arr.length - 1];
 const noop = Function.prototype;
