@@ -62,7 +62,8 @@
       ]
     },
     "types": [
-      "@types/node"
+      "@types/node",
+      "jest"
     ],
     "noUnusedLocals": true,
     "noUnusedParameters": true,

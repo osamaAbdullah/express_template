@@ -18,7 +18,7 @@ await initializePassport(app);
 
 app.use(cors({ credentials: true }));
 
-const __filename = new URL('', import.meta.url).pathname;
+// const __filename = new URL('', import.meta.url).pathname;
 const __dirname = new URL('.', import.meta.url).pathname;
 
 app.use(express.json());

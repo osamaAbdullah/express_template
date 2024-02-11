@@ -74,16 +74,16 @@ const config: Config.InitialOptions = {
     // ],
     
     // An array of file extensions your modules use
-    // moduleFileExtensions: [
-    //   "js",
-    //   "mjs",
-    //   "cjs",
-    //   "jsx",
-    //   "ts",
-    //   "tsx",
-    //   "json",
-    //   "node"
-    // ],
+    moduleFileExtensions: [
+        "js",
+        "mjs",
+        "cjs",
+        "jsx",
+        "ts",
+        "tsx",
+        "json",
+        "node"
+    ],
     
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources
     // with a single module
@@ -109,7 +109,7 @@ const config: Config.InitialOptions = {
     // notifyMode: "failure-change",
     
     // A preset that is used as a base for Jest's configuration
-    // preset: undefined,
+    preset: 'ts-jest/presets/default-esm',
     
     // Run tests from one or more projects
     // projects: undefined,
@@ -153,7 +153,7 @@ const config: Config.InitialOptions = {
     // snapshotSerializers: [],
     
     // The test environment that will be used for testing
-    // testEnvironment: "jest-environment-node",
+    testEnvironment: 'node',
     
     // Options that will be passed to the testEnvironment
     // testEnvironmentOptions: {},
@@ -183,7 +183,15 @@ const config: Config.InitialOptions = {
     
     // A map from regular expressions to paths to transformers
     transform: {
-        '^.+\\.ts?$': 'ts-jest',
+        '^.+\\.ts?$': [ 'ts-jest',
+            {
+                tsconfig: {
+                    module: 'ESNext',
+                    target: 'ES2017'
+                },
+                useESM: true
+            }
+        ],
     },
     
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip
