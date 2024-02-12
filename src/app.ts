@@ -2,7 +2,7 @@ import { logger } from "@/middlewares/logger.middleware";
 import initializePassport from "@config/passport";
 import '@config/vinejs/register';
 import '@exceptions/asyncErrorHandling';
-import { globalErrorHandlers, norFoundErrorHandler } from "@exceptions/errorHandlers";
+import { globalErrorHandlers, notFoundErrorHandler } from "@exceptions/errorHandlers";
 import APIRoutes from '@routes/api';
 import cors from 'cors';
 import { config } from "dotenv";
@@ -29,7 +29,7 @@ app.use(logger);
 
 app.use('/api/v1', APIRoutes)
 
-app.all('*', norFoundErrorHandler);
+app.all('*', notFoundErrorHandler);
 app.use(globalErrorHandlers)
 
 export default app;

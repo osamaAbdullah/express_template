@@ -24,7 +24,12 @@ export const globalErrorHandlers = (err, req, res, next) => {
         
         // handle vineJs validation errors
         if (err instanceof errors.E_VALIDATION_ERROR) {
-            return res.json({ msg: err.messages })
+            console.log(
+                '\n=========================================[ Validation Errors ]==============================================\n',
+                err.messages,
+                '\n============================================================================================================\n',
+            )
+            return res.status(422).json({ msg: err.messages })
         }
         
         const status: number = err.statusCode || 500;
@@ -52,6 +57,6 @@ export const globalErrorHandlers = (err, req, res, next) => {
     }
 };
 
-export const norFoundErrorHandler = (req, res) => {
+export const notFoundErrorHandler = (req, res) => {
     res.status(404).json({ message: 'Route not found!' });
 };
