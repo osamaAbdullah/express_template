@@ -1,17 +1,11 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "lib": ["ES2022"],
-    "module": "ES2022",
-    "moduleResolution": "Node",
-    "target": "ES2022",
-    "esModuleInterop": true,
-    //    "target": "ESNext",
-    //    "module": "NodeNext",
-    //    "moduleResolution": "NodeNext",
-    //    "lib": [
-    //      "ESNext"
-    //    ],
+    "target": "es2017",
+    "lib": [
+      "es2017",
+      "esnext.asynciterable"
+    ],
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -19,12 +13,15 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "pretty": true,
     "sourceMap": true,
     "declaration": true,
     "outDir": "dist",
     "allowJs": true,
     "noEmit": false,
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "importHelpers": true,
     "baseUrl": "src",
@@ -56,27 +53,8 @@
       ],
       "@utils/*": [
         "lib/utils/*"
-      ],
-      "@console/*": [
-        "console/*"
       ]
-    },
-    "types": [
-      "@types/node",
-      "jest"
-    ],
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "isolatedModules": true,
-    "removeComments": true,
-    "rootDir": "./",
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "noImplicitAny": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "skipLibCheck": true
+    }
   },
   "include": [
     "src/**/*.ts",
@@ -84,12 +62,8 @@
     ".env"
   ],
   "exclude": [
-    "./node_modules",
-    "./dist"
-  ],
-  "ts-node": {
-    "swc": true,
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  }
+    "node_modules",
+    "src/http",
+    "src/logs"
+  ]
 }
