@@ -12,7 +12,7 @@ export default (app) => {
     passport.use(
         new passportLocal.Strategy({ usernameField: 'email', passwordField: 'password' },
             async (email, password, callback) => {
-                
+              
                 const schema = vine.object({
                     email: vine.string().email(),
                     password: vine
@@ -24,9 +24,9 @@ export default (app) => {
                 await vine.validate({ schema, data: { email, password } });
                 
                 const user = await User.findOne({ where: { email } });
-                
+           
                 if (!user || !validatePassword(password, user.password, user.salt)) {
-                    return callback(undefined, false, { message: `credentials does not match our records!` });
+                    return callback(undefined, false);
                 }
                 
                 return callback(undefined, user)
@@ -44,4 +44,21 @@ export default (app) => {
     
 }
 
-
+export function customAuthenticate(req, res, next) {
+    
+    passport.authenticate('local', (err, user, info) => {
+        
+        if (err) return next(err);
+        
+        if (!user) return res.status(401).json({ message: 'credentials does not match our records!' });
+        
+        req.login(user, (err) => {
+            
+            if (err) return next(err);
+            
+            return res.json({ user });
+        });
+        
+    })(req, res, next);
+    
+}

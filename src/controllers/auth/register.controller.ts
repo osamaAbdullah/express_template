@@ -1,3 +1,4 @@
+import { customAuthenticate } from "@config/passport";
 import { User } from "@models/user.model";
 import { createPassword } from "@utils/password.util";
 import vine from '@vinejs/vine';
@@ -18,5 +19,5 @@ export async function register(req: Request, res: Response, next: NextFunction) 
     
     await User.create({ name, email, role, password: hash, salt });
     
-    res.redirect(307, '/api/v1/login')
+    customAuthenticate(req, res, next);
 }

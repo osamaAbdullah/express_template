@@ -5,6 +5,7 @@ import { Post } from '@models/post.model';
 import request from "supertest";
 
 const basePath = '/api/v1/posts/';
+const Http = request.agent(app);
 
 describe('test post model', () => {
     
@@ -14,16 +15,14 @@ describe('test post model', () => {
     
     it('creates a post', async () => {
         const post = await makePost();
-        // noinspection TypeScriptValidateTypes
-        const res = await request(app).post(basePath).send(post);
+        const res = await Http.post(basePath).send(post);
         expect(res.statusCode).toBe(200);
         expect(res.body.title).toMatch(post.title);
     });
     
     it('get a specific post in db', async () => {
         const post = await createPost();
-        // noinspection TypeScriptValidateTypes
-        const res = await request(app).get(basePath + post.id);
+        const res = await Http.get(basePath + post.id);
         expect(res.statusCode).toBe(200);
         expect(res.body.title).toMatch(post.title);
     });
@@ -31,16 +30,14 @@ describe('test post model', () => {
     it('update a specific post in db', async () => {
         const post = await createPost();
         const title = 'new title';
-        // noinspection TypeScriptValidateTypes
-        const res = await request(app).put(basePath + post.id).send({ ...post, title });
+        const res = await Http.put(basePath + post.id).send({ ...post, title });
         expect(res.statusCode).toBe(200);
         expect(res.body.title).toMatch(title);
     });
     
     it('get a specific post in db', async () => {
         const post = await createPost();
-        // noinspection TypeScriptValidateTypes
-        const res = await request(app).get(basePath + post.id);
+        const res = await Http.get(basePath + post.id);
         expect(res.statusCode).toBe(200);
         expect(res.body.title).toMatch(post.title);
     });
@@ -48,8 +45,7 @@ describe('test post model', () => {
     it('update a specific post in db', async () => {
         const post = await createPost();
         const title = 'updates title';
-        // noinspection TypeScriptValidateTypes
-        const res = await request(app).put(basePath + post.id).send({ ...post, title });
+        const res = await Http.put(basePath + post.id).send({ ...post, title });
         expect(res.statusCode).toBe(200);
         expect(res.body.title).toMatch(title);
     });
@@ -57,8 +53,7 @@ describe('test post model', () => {
     it('get all post in db', async () => {
         await Post.destroy({ where: {} });
         const postIds = await createPosts({}, 3);
-        // noinspection TypeScriptValidateTypes
-        const res = await request(app).get(basePath);
+        const res = await Http.get(basePath);
         expect(res.statusCode).toBe(200);
         expect(res.body.posts.map(post => post.id)).toEqual(postIds);
     });
@@ -67,8 +62,7 @@ describe('test post model', () => {
         await Post.destroy({ where: {} });
         const post = await createPost();
         expect(await Post.count()).toEqual(1);
-        // noinspection TypeScriptValidateTypes
-        const res = await request(app).delete(basePath + post.id);
+        const res = await Http.delete(basePath + post.id);
         expect(res.statusCode).toBe(200);
         expect(await Post.count()).toEqual(0);
     });
