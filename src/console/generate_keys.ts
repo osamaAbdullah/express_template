@@ -7,7 +7,7 @@ import fs from 'fs'
     const dir = storagePath('keys')
     
     if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir);
+        fs.mkdirSync(dir, {recursive: true});
     }
     
     const keyPair = crypto.generateKeyPairSync('rsa', {
