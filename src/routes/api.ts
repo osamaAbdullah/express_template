@@ -1,7 +1,7 @@
-import express from 'express';
-import * as User from "@controllers/user.controller";
 import * as Post from "@controllers/post.controller";
-import authRoutes from "@routes/auth.routes";
+import * as User from "@controllers/user.controller";
+import authRoutes from "@routes/auth";
+import express from 'express';
 
 const router = express.Router();
 
